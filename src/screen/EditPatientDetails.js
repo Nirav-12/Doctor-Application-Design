@@ -12,6 +12,7 @@ import {
   BottomSheetBackdrop,
 } from "@gorhom/bottom-sheet";
 import { useRef, useCallback } from "react";
+import { Entypo } from "@expo/vector-icons";
 
 const EditPatientDetails = () => {
   const sheetRef = useRef(null);
@@ -51,6 +52,11 @@ const EditPatientDetails = () => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
+        <View style={{ alignItems: "flex-end", marginRight: 10 }}>
+          <TouchableOpacity onPress={() => closeModal()}>
+            <Entypo name="cross" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
         <View style={{ marginHorizontal: 30, marginTop: 30, marginBottom: 30 }}>
           <Text style={{ fontSize: 20 }}>Update Patient Details</Text>
           <TextInput placeholder="Your Name" style={styles.textInput} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StatusBar, ScrollView, FlatList } from "react-native";
+import { View, StatusBar, FlatList } from "react-native";
 
 import Date from "../comp/Date";
 import { DateData } from "../Data/Date";

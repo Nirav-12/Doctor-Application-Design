@@ -1,35 +1,21 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  FlatList,
-} from "react-native";
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  FontAwesome,
-  AntDesign,
-  MaterialIcons,
-} from "@expo/vector-icons";
-import DoctorCard from "../comp/DoctorCard";
+import React from "react";
+import { View, Text, StatusBar, FlatList } from "react-native";
+import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
 
-import TimeSlot from "../comp/TimeSlot";
-import { ServiceData } from "../Data/ServiceData";
-import About from "../comp/About";
+import DoctorCard from "../comp/DoctorCard";
 import CollapseCardParent from "../comp/CollapseCardParent";
 import BookingTimeSlot from "../comp/BookingTimeSlot";
 import NeedHelp from "../comp/NeedHelp";
 import Reviews from "../comp/Reviews";
 import Benefits from "../comp/Benefits";
 import { DocDetailCollapse } from "../Data/DocDetailCollapse";
-import Header from "../comp/Header";
+import DocClickHere from "../comp/DocClickHere";
+import OnlineConsultation from "../comp/OnlineConsultation";
+import AboutParent from "../comp/AboutParent";
+import ServicesParent from "../comp/ServicesParent";
+import TimeSlotAlign from "../comp/TimeSlotAlign";
 
-const DoctorsDetails = () => {
-  let [slot, setSlot] = useState(false);
-  let [expand, setExpand] = useState(false);
-  let [about, setAbout] = useState(true);
+const DoctorsDetails = ({ navigation }) => {
   return (
     <View>
       <StatusBar hidden={true} />
@@ -72,64 +58,17 @@ const DoctorsDetails = () => {
               <Benefits text="Dedicated personal assistance" />
               <Benefits text="Assistance in insurance claim" />
               <Benefits text="Post-surgery Care and Guidance" />
-
-              <View>
-                <Text style={{ fontSize: 12, color: "gray" }}>
-                  If you are a Doctor and interested to learn more about
-                </Text>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ fontSize: 12, color: "gray" }}>
-                    the Zen Care Services
-                  </Text>
-                  <TouchableOpacity>
-                    <Text style={{ fontSize: 12, color: "#108FE5" }}>
-                      Click Here
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
+              <DocClickHere />
             </View>
-            <View
-              style={{
-                backgroundColor: "#e9f3ff",
-                height: 30,
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <FontAwesome
-                name="video-camera"
-                size={20}
-                color="#108FE5"
-                style={{ marginLeft: 15, marginRight: 5 }}
-              />
-              <Text style={{ fontSize: 16 }}>Online Consultation</Text>
-            </View>
+            <OnlineConsultation />
             <View style={{ backgroundColor: "white", height: 3 }}></View>
             <View style={{ backgroundColor: "#fafafa" }}>
               <BookingTimeSlot />
             </View>
-            <View
-              style={{
-                borderBottomColor: "gray",
-                borderBottomWidth: 1,
-                backgroundColor: "#fafafa",
-              }}
-            >
-              <TimeSlot slot={slot} />
-            </View>
-            <View style={{ marginHorizontal: 15 }}>
-              <View>
-                <TouchableOpacity
-                  style={{ marginVertical: 5, alignItems: "center" }}
-                  onPress={() => setSlot(!slot)}
-                >
-                  <Text style={{ color: "#108FE5" }}>
-                    {slot ? "Hide slots" : "View all Slots"}
-                  </Text>
-                </TouchableOpacity>
-              </View>
 
+            <TimeSlotAlign />
+
+            <View style={{ marginHorizontal: 15 }}>
               <View style={{ backgroundColor: "gray", height: 1 }} />
               <View style={{ marginTop: 10 }}>
                 <NeedHelp />
@@ -194,42 +133,7 @@ const DoctorsDetails = () => {
                 </Text>
               </View>
               <View style={{ marginBottom: 15 }}>
-                <FlatList
-                  key="services"
-                  data={ServiceData}
-                  renderItem={({ item, index }) =>
-                    !expand ? (
-                      index < 2 ? (
-                        <Text style={{ fontSize: 15 }}>• {item.service}</Text>
-                      ) : index == 2 ? (
-                        <View style={{ flexDirection: "row" }}>
-                          <Text>• {item.service}</Text>
-
-                          <TouchableOpacity
-                            style={{ flex: 1, alignItems: "flex-end" }}
-                            onPress={() => {
-                              setExpand(true);
-                            }}
-                          >
-                            <Text style={{ color: "#108FE5" }}>See more</Text>
-                          </TouchableOpacity>
-                        </View>
-                      ) : null
-                    ) : index != ServiceData.length - 1 ? (
-                      <Text style={{ fontSize: 15 }}>• {item.service}</Text>
-                    ) : (
-                      <View style={{ flexDirection: "row" }}>
-                        <Text>• {item.service} </Text>
-                        <TouchableOpacity
-                          onPress={() => setExpand(false)}
-                          style={{ alignItems: "flex-end", flex: 1 }}
-                        >
-                          <Text style={{ color: "#108FE5" }}> See less</Text>
-                        </TouchableOpacity>
-                      </View>
-                    )
-                  }
-                />
+                <ServicesParent />
               </View>
             </View>
             <View
@@ -245,7 +149,7 @@ const DoctorsDetails = () => {
                 </Text>
               </View>
               <View style={{ marginBottom: 15 }}>
-                <About click={() => setAbout(!about)} curr={about} />
+                <AboutParent />
               </View>
             </View>
             <CollapseCardParent data={DocDetailCollapse} />

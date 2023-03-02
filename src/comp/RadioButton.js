@@ -4,48 +4,23 @@ import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { useEffect } from "react";
 
-let data = [
-  {
-    value: 0,
-    label: "i am busy",
-  },
-  {
-    value: 1,
-    label: "forgot about the appointment",
-  },
-  {
-    value: 2,
-    label: "Changed my mind ",
-  },
-  {
-    value: 3,
-    label: "Visited another doctor",
-  },
-  {
-    value: 4,
-    label: "Clinic/Hospital is far",
-  },
-  {
-    value: 5,
-    label: "Doctor asked me to cancel",
-  },
-];
-
 const RadioButton = (props) => {
   const [radio, setRadio] = useState(null);
+  // console.log(props);
 
   useEffect(() => {
-    if (radio) props.setButton();
+    if (props.setButton && radio) props.setButton();
   }, [radio]);
 
   return (
     <View style={{ marginHorizontol: 15, alignItems: "center" }}>
-      {data.map((val, index) => (
+      {props.data.map((val, index) => (
         <RadioButtonComp
           val={val}
           key={index}
           onClick={() => setRadio(index)}
           isTrue={radio == index}
+          border={props.border}
         />
       ))}
     </View>
@@ -58,7 +33,7 @@ const RadioButtonComp = (props) => {
   return (
     <View
       style={{
-        borderWidth: 1,
+        borderWidth: props.border ? 1 : 0,
         paddingVertical: 10,
         flexDirection: "row",
         width: "100%",

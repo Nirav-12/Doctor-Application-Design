@@ -1,11 +1,11 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import ApplyCoupon from "../comp/ApplyCoupon";
-import { FontAwesome5, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const Coupons = () => {
   return (
-    <View style={{ backgroundColor: "white" }}>
+    <View style={{ backgroundColor: "white", flex: 1, paddingTop: 10 }}>
       <View
         style={{
           flexDirection: "row",
@@ -42,7 +42,6 @@ const Coupons = () => {
         style={{
           marginHorizontal: 10,
           alignItems: "center",
-          borderBottomWidth: 1,
         }}
       >
         <ApplyCoupon />

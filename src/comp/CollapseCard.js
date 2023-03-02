@@ -17,7 +17,6 @@ const CollapseCard = (props) => {
             style={{
               marginVertical: 15,
               fontSize: 17,
-              fontWeight: "500",
               width: 290,
             }}
             numberOfLines={1}
@@ -30,17 +29,11 @@ const CollapseCard = (props) => {
             size={30}
             color="black"
           />
-
-          {/* {props.isOpen ? (
-            <FontAwesome name="angle-down" size={30} color="black" />
-          ) : (
-            <FontAwesome name="angle-right" size={30} color="black" />
-          )} */}
         </View>
       </TouchableOpacity>
       {props.isOpen && (
         <View style={{ marginBottom: 15 }}>
-          <Text>{props.para}</Text>
+          <Text style={{ color: "#666666" }}>{props.para}</Text>
         </View>
       )}
     </View>

@@ -11,12 +11,12 @@ import DoctorWriteReview from "./src/screen/DoctorWriteReview ";
 import MyAppointment from "./src/screen/MyAppointment";
 import BookAppointment from "./src/screen/BookAppointment";
 import AppointmentConfirmed from "./src/screen/AppointmentConfirmed";
-import EditPatientDetails from "./src/screen/EditPatientDetails";
 import AppointmentCancellation from "./src/screen/AppointmentCancellation";
 import AppointmentCancelled from "./src/screen/AppointmentCancelled";
 import Info from "./src/screen/Info";
 import Coupons from "./src/screen/Coupons";
 import Header from "./src/comp/Header";
+import { Touchable, TouchableOpacity } from "react-native";
 
 export default function App() {
   let Stack = createNativeStackNavigator();
@@ -32,59 +32,60 @@ export default function App() {
               header: () => <Header title="Doctor" icon="search1" />,
             }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             component={DoctorsDetails}
             name="DoctorsDetails"
             options={{
               header: () => <Header />,
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={SelectTimeSlot}
             name="SelectTimeSlot"
             options={{
               header: () => <Header title="Select a time slot" />,
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+
+          <Stack.Screen
             component={Reschedule}
             name="Reschedule"
             options={{
               header: () => <Header title="Reschedule" />,
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={DoctorReviews}
             name="DoctorReviews"
             options={{
               header: () => <Header title="Reviews" center />,
             }}
-          /> */}
+          />
 
-          {/* <Stack.Screen
+          <Stack.Screen
             component={DoctorWriteReview}
             name="DoctorWriteReview"
             options={{
               header: () => <Header title="Write review" center />,
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+
+          <Stack.Screen
             component={MyAppointment}
             name="MyAppointment"
-            // options={{ headerTitle: "My Appointments" }}
             options={{
               header: () => <Header title="My Appointments" />,
             }}
-          /> */}
-          {/* 
+          />
+
           <Stack.Screen
             component={BookAppointment}
             name="BookAppointment"
             options={{
               header: () => <Header title="Book Appointment" />,
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={AppointmentConfirmed}
             name="AppointmentConfirmed"
             options={{
@@ -92,14 +93,9 @@ export default function App() {
                 <Header title=" Appointment Confirmed" color="#0C8A12" />
               ),
             }}
-          /> */}
-          {/* 
+          />
+
           <Stack.Screen
-            component={EditPatientDetails}
-            name="EditPatientDetails"
-            options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
             component={AppointmentCancellation}
             name="AppointmentCancellation"
             options={{
@@ -107,32 +103,33 @@ export default function App() {
                 <Header title="Appointment Cancellation" color="#FF4040" />
               ),
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={AppointmentCancelled}
             name="AppointmentCancelled"
             options={{
-              header: () => (
+              header: ({ navigation }) => (
                 <Header
                   title="Appointment Cancelled"
                   color="#FF4040"
                   icon="questioncircle"
+                  iconPress={() => navigation.navigate("Info")}
                 />
               ),
             }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={Info}
             name="Info"
             options={{ headerShown: false }}
-          /> */}
-          {/* <Stack.Screen
+          />
+          <Stack.Screen
             component={Coupons}
             name="Coupons"
             options={{
               header: () => <Header title="Coupons" />,
             }}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </MenuProvider>

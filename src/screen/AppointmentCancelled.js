@@ -1,36 +1,28 @@
-// import AppointmentCancelledCard from "../comp/AppointmentCancelledCard";
-
-//  AppointmentCancelled
-
-import RadioButton from "../comp/RadioButton";
-
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import DoctorCard from "../comp/DoctorCard";
 import OnlineConsultation from "../comp/OnlineConsultation";
 import AppointmentCancelledCard from "../comp/AppointmentCancelledCard";
 import { AntDesign } from "@expo/vector-icons";
-import KnowMore from "../comp/KnowMore";
 import NeedHelp from "../comp/NeedHelp";
 import * as ImagePicker from "expo-image-picker";
-import RadioButtonCard from "../comp/RadioButtonCard";
 
-const AppointmentCancelled = () => {
+const AppointmentCancelled = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const GetImage = async () => {
-    let respone = await ImagePicker.launchImageLibraryAsync({
+    let response = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
     });
 
-    if (!respone.canceled) {
-      setImage(respone.assets[0].uri);
+    if (!response.canceled) {
+      setImage(response.assets[0].uri);
     }
   };
   return (
     <ScrollView>
       <View style={{ backgroundColor: "white", paddingTop: 10 }}>
-        <View style={{ alignItems: "center" }}>
+        <View style={{ alignItems: "center", marginTop: 10 }}>
           <DoctorCard />
         </View>
         <View style={{ marginHorizontal: 15, marginVertical: 10 }}>

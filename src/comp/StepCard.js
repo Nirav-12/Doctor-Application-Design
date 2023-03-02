@@ -8,7 +8,8 @@ const StepCard = (props) => {
         <View
           style={{
             height: 20,
-            // borderWidth: 1,
+            borderWidth: 1,
+            borderColor: "#EEEEEE",
             width: 20,
             borderRadius: 10,
             backgroundColor: props.reached ? "#108FE5" : "white",
@@ -20,7 +21,7 @@ const StepCard = (props) => {
               height: 40,
               borderWidth: 1,
               width: 1,
-              borderColor: props.reached ? "#108FE5" : "black",
+              borderColor: props.reached ? "#108FE5" : "gray",
             }}
           ></View>
         )}

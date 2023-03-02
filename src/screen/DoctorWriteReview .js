@@ -11,17 +11,19 @@ import RatingBar from "../comp/RatingBar";
 
 const DoctorWriteReview = () => {
   return (
-    <View style={{ marginHorizontal: 15 }}>
-      <View style={{ marginTop: 10, flexDirection: "row" }}>
-        <Text>Your Rating : </Text>
-        <RatingBar />
+    <View style={{ backgroundColor: "white" }}>
+      <View style={{ marginHorizontal: 15 }}>
+        <View style={{ marginTop: 10, flexDirection: "row" }}>
+          <Text>Your Rating : </Text>
+          <RatingBar />
+        </View>
+        <View style={styles.reviewInput}>
+          <TextInput placeholder="Write review" />
+        </View>
+        <TouchableOpacity style={styles.submitButton}>
+          <Text style={{ color: "white", fontWeight: "700" }}>Submit</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.reviewInput}>
-        <TextInput placeholder="Write review" />
-      </View>
-      <TouchableOpacity style={styles.submitButton}>
-        <Text style={{ color: "white", fontWeight: "700" }}>Submit</Text>
-      </TouchableOpacity>
     </View>
   );
 };

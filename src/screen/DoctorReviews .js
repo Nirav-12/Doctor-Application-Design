@@ -9,7 +9,7 @@ const DoctorReviews = () => {
   let rate = 4.5;
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           backgroundColor: "lightgray",
@@ -22,16 +22,23 @@ const DoctorReviews = () => {
         <Text>{rate} out of 5</Text>
       </View>
 
-      <View style={{ alignItems: "center" }}>
-        <ScrollView>
-          {ReviewData.map((object, index) => (
-            <View key={index} style={{ margin: 10, flexDirection: "row" }}>
-              <ReviewCard data={object} />
-              <ReviewMenu />
-            </View>
-          ))}
-        </ScrollView>
-      </View>
+      <ScrollView>
+        {ReviewData.map((object, index) => (
+          <View
+            key={index}
+            style={{
+              margin: 15,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              borderWidth: 1,
+              padding: 13,
+            }}
+          >
+            <ReviewCard data={object} />
+            <ReviewMenu />
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };

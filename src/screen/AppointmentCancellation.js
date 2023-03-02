@@ -1,15 +1,8 @@
-import RadioButton from "../comp/RadioButton";
-
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import DoctorCard from "../comp/DoctorCard";
 import OnlineConsultation from "../comp/OnlineConsultation";
-import {
-  AntDesign,
-  MaterialCommunityIcons,
-  FontAwesome,
-} from "@expo/vector-icons";
-import KnowMore from "../comp/KnowMore";
+import { AntDesign } from "@expo/vector-icons";
 import NeedHelp from "../comp/NeedHelp";
 import * as ImagePicker from "expo-image-picker";
 import RadioButtonCard from "../comp/RadioButtonCard";
@@ -18,12 +11,12 @@ const AppointmentCancellation = () => {
   const [image, setImage] = useState(null);
 
   const GetImage = async () => {
-    let respone = await ImagePicker.launchImageLibraryAsync({
+    let response = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
     });
 
-    if (!respone.canceled) {
-      setImage(respone.assets[0].uri);
+    if (!response.canceled) {
+      setImage(response.assets[0].uri);
     }
   };
   return (
@@ -60,7 +53,7 @@ const AppointmentCancellation = () => {
             <AntDesign
               name="checkcircle"
               size={15}
-              color="black"
+              color="#108FE5"
               style={{ marginRight: 5 }}
             />
             <Text>Book for - Chandu Patil</Text>
@@ -71,7 +64,7 @@ const AppointmentCancellation = () => {
           </View>
         </View>
 
-        <View style={{ marginHorizontal: 15, marginTop: 30 }}>
+        <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 10 }}>
           <Text>Please help us know the reason for cancelling </Text>
         </View>
 
@@ -87,7 +80,7 @@ const AppointmentCancellation = () => {
             flexDirection: "row",
             marginHorizontal: 15,
             justifyContent: "space-between",
-            paddingBottom: 10,
+            paddingBottom: 15,
             borderBottomWidth: 1,
             borderBottomColor: "gray",
           }}

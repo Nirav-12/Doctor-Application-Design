@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import Card from "../comp/Card";
 import Date from "../comp/Date";
 import FilterButton from "../comp/FilterButton";
-import Header from "../comp/Header";
 import TimeButton from "../comp/TimeButton";
 
-const DoctorsList = () => {
+const DoctorsList = ({ navigation }) => {
   let [select, setSelect] = useState("All");
   let [date, setDate] = useState("Today");
   return (

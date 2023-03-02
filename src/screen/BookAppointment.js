@@ -1,11 +1,15 @@
-import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
-import React, { useState } from "react";
-import DoctorCard from "../comp/DoctorCard";
 import {
-  FontAwesome,
-  MaterialCommunityIcons,
-  Ionicons,
-} from "@expo/vector-icons";
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  TextInput,
+  StyleSheet,
+} from "react-native";
+import React from "react";
+import DoctorCard from "../comp/DoctorCard";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import KnowMore from "../comp/KnowMore";
 import UseCoupons from "../comp/UseCoupons.js";
@@ -13,9 +17,9 @@ import Promise from "../comp/Promise";
 import Reviews from "../comp/Reviews";
 import NeedHelp from "../comp/NeedHelp";
 import OnlineConsultation from "../comp/OnlineConsultation";
+import CheckBox from "../comp/CheckBox";
 
-const BookAppointment = () => {
-  const [isChecked, setIsChecked] = useState(true);
+const BookAppointment = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={{ backgroundColor: "white" }}>
@@ -45,9 +49,12 @@ const BookAppointment = () => {
             </Text>
           </View>
           <KnowMore />
-          <View style={{ marginVertical: 15 }}>
+          <TouchableOpacity
+            style={{ marginVertical: 15 }}
+            onPress={() => navigation.navigate("Coupons")}
+          >
             <UseCoupons />
-          </View>
+          </TouchableOpacity>
           <Text style={{ fontSize: 18, marginVertical: 7 }}>Price Details</Text>
           <View
             style={{
@@ -88,7 +95,9 @@ const BookAppointment = () => {
           </Text>
         </View>
 
-        <Promise />
+        <View style={{ margin: 15 }}>
+          <Promise />
+        </View>
 
         <Reviews />
 
@@ -102,23 +111,7 @@ const BookAppointment = () => {
             marginBottom: 10,
           }}
         >
-          <View style={[{ height: 20, width: 20, borderWidth: 1 }]}>
-            <TouchableOpacity
-              onPress={() => setIsChecked(!isChecked)}
-              style={{ height: 18, width: 18 }}
-            >
-              {isChecked && (
-                <View style={{ backgroundColor: "#108FE5", height: 18 }}>
-                  <Ionicons
-                    name="checkmark"
-                    size={15}
-                    color="white"
-                    style={{ alignSelf: "center" }}
-                  />
-                </View>
-              )}
-            </TouchableOpacity>
-          </View>
+          <CheckBox />
           <Text style={{ fontSize: 20, marginHorizontal: 10 }}>
             Get notification on Whatsapp
           </Text>
@@ -206,6 +199,7 @@ const BookAppointment = () => {
               paddingVertical: 7,
               borderRadius: 3,
             }}
+            onPress={() => navigation.navigate("AppointmentConfirmed")}
           >
             <Text style={{ color: "white" }}>Pay & confirm</Text>
           </TouchableOpacity>

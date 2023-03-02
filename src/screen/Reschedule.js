@@ -4,10 +4,9 @@ import { View, StatusBar, Text, DatePickerIOSComponent } from "react-native";
 import DoctorCard from "../comp/DoctorCard";
 import BookingTimeSlot from "../comp/BookingTimeSlot";
 import { Feather } from "@expo/vector-icons";
-import TimeCard from "../comp/TimeCard";
 
 import NeedHelp from "../comp/NeedHelp";
-import Header from "../comp/Header";
+import TimeSlot from "../comp/TimeSlot";
 
 const Reschedule = () => {
   let date = new Date();
@@ -59,7 +58,7 @@ const Reschedule = () => {
         </View>
 
         <View>
-          <TimeCard />
+          <TimeSlot slot />
         </View>
 
         <View style={{ marginTop: 10, marginHorizontal: 15 }}>

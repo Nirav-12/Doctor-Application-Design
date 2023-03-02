@@ -4,10 +4,8 @@ import { View, StatusBar, Text } from "react-native";
 import DoctorCard from "../comp/DoctorCard";
 import BookingTimeSlot from "../comp/BookingTimeSlot";
 
-import TimeCard from "../comp/TimeCard";
-
 import NeedHelp from "../comp/NeedHelp";
-import Header from "../comp/Header";
+import TimeSlot from "../comp/TimeSlot";
 
 const SelectTimeSlot = () => {
   return (
@@ -27,7 +25,7 @@ const SelectTimeSlot = () => {
         </View>
 
         <View>
-          <TimeCard />
+          <TimeSlot slot />
         </View>
 
         <View style={{ marginTop: 10, marginHorizontal: 15 }}>

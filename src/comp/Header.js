@@ -14,9 +14,9 @@ const Header = (props) => {
       }}
     >
       <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity style={{ paddingHorizontal: 7 }}>
+        {/* <TouchableOpacity style={{ paddingHorizontal: 7 }}>
           <FontAwesome name="angle-left" size={28} color="black" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         {props.title && (
           <Text
@@ -31,7 +31,16 @@ const Header = (props) => {
         )}
       </View>
 
-      {props.icon && <AntDesign name={props.icon} size={24} color="gray" />}
+      {props.icon && (
+        <TouchableOpacity onPress={props.iconPress ?? null}>
+          <AntDesign
+            name={props.icon}
+            size={22}
+            color="gray"
+            style={{ marginRight: 10 }}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

@@ -1,24 +1,27 @@
-import { FlatList, View } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import TimeButton from "./TimeButton";
+import { TimeData } from "../Data/TimeData";
+import { useNavigation } from "@react-navigation/native";
 
 const TimeSlot = (props) => {
+  const navigation = useNavigation();
+
   let slot = props.slot;
-  let data = [
-    { time: "09:00 AM" },
-    { time: "09:30 AM" },
-    { time: "10:00 AM" },
-    { time: "10:30 AM" },
-    { time: "11:00 AM" },
-    { time: "11:30 AM" },
-  ];
+
   return (
     <View style={{ alignItems: "center" }}>
       {slot ? (
         <FlatList
           listKey={(index) => index.toString()}
           key="vertical"
-          data={data}
-          renderItem={({ item }) => <TimeButton time={item.time} />}
+          data={TimeData}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("BookAppointment")}
+            >
+              <TimeButton time={item.time} />
+            </TouchableOpacity>
+          )}
           style={{ marginVertical: 10 }}
           numColumns={3}
         />
@@ -28,8 +31,14 @@ const TimeSlot = (props) => {
           listKey={(index) => {
             index.toString();
           }}
-          data={data}
-          renderItem={({ item }) => <TimeButton time={item.time} />}
+          data={TimeData}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("BookAppointment")}
+            >
+              <TimeButton time={item.time} />
+            </TouchableOpacity>
+          )}
           horizontal
           style={{ marginVertical: 10 }}
           showsHorizontalScrollIndicator={false}

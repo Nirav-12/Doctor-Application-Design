@@ -2,25 +2,21 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import DoctorCard from "../comp/DoctorCard";
 import OnlineConsultation from "../comp/OnlineConsultation";
-import {
-  AntDesign,
-  MaterialCommunityIcons,
-  FontAwesome,
-} from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import KnowMore from "../comp/KnowMore";
 import NeedHelp from "../comp/NeedHelp";
 import * as ImagePicker from "expo-image-picker";
 
-const AppointmentConfirmed = () => {
+const AppointmentConfirmed = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const GetImage = async () => {
-    let respone = await ImagePicker.launchImageLibraryAsync({
+    let response = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
     });
 
-    if (!respone.canceled) {
-      setImage(respone.assets[0].uri);
+    if (!response.canceled) {
+      setImage(response.assets[0].uri);
     }
   };
   return (
@@ -57,7 +53,7 @@ const AppointmentConfirmed = () => {
             <AntDesign
               name="checkcircle"
               size={15}
-              color="black"
+              color="#108FE5"
               style={{ marginRight: 5 }}
             />
             <Text>Book for - Chandu Patil</Text>
@@ -82,12 +78,13 @@ const AppointmentConfirmed = () => {
             borderBottomWidth: 1,
           }}
         >
-          <View
+          <TouchableOpacity
             style={{
               flexDirection: "row",
               marginBottom: 10,
               alignItems: "center",
             }}
+            onPress={() => navigation.navigate("Reschedule")}
           >
             <MaterialCommunityIcons
               name="calendar-clock"
@@ -96,13 +93,14 @@ const AppointmentConfirmed = () => {
               style={{ marginRight: 5 }}
             />
             <Text style={{ fontSize: 17 }}>Reschedule</Text>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity
             style={{
               flexDirection: "row",
               marginBottom: 10,
               alignItems: "center",
             }}
+            onPress={() => navigation.navigate("AppointmentCancellation")}
           >
             <MaterialCommunityIcons
               name="cancel"
@@ -111,7 +109,7 @@ const AppointmentConfirmed = () => {
               style={{ marginRight: 5 }}
             />
             <Text style={{ fontSize: 17 }}>Cancel</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{ marginHorizontal: 15, marginVertical: 10 }}>
           <Text style={{ fontSize: 17 }}>Booking Details</Text>

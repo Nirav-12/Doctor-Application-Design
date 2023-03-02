@@ -3,7 +3,14 @@ import React from "react";
 
 const ApplyCoupon = () => {
   return (
-    <View style={{ height: 143 }}>
+    <View
+      style={{
+        height: 143,
+        borderBottomWidth: 1,
+        width: "100%",
+        borderColor: "gray",
+      }}
+    >
       <Text
         style={{
           fontSize: 22,
@@ -26,6 +33,7 @@ const ApplyCoupon = () => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
+          marginTop: 5,
         }}
       >
         <View
